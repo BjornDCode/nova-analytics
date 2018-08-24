@@ -31,7 +31,7 @@ public function tools()
 {
     return [
         // ...
-        new \:namespace_vendor\:namespace_tool_name\Tool(),
+        new \BjornDCode\NovaAnalyticsTool\AnalyticsTool(),
     ];
 }
 ```
