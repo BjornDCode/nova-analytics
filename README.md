@@ -1,21 +1,23 @@
 # Nova Analytics
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor/:package_name.svg?style=flat-square)](https://packagist.org/packages/:vendor/:package_name)
-[![Build Status](https://img.shields.io/travis/:vendor/:package_name/master.svg?style=flat-square)](https://travis-ci.org/:vendor/:package_name)
-[![Quality Score](https://img.shields.io/scrutinizer/g/:vendor/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/:vendor/:package_name)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor/:package_name.svg?style=flat-square)](https://packagist.org/packages/:vendor/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/bjorndcode/nova-analytics.svg?style=flat-square)](https://packagist.org/packages/bjorndcode/nova-analytics)
+[![Total Downloads](https://img.shields.io/packagist/dt/bjorndcode/nova-analytics.svg?style=flat-square)](https://packagist.org/packages/bjorndcode/nova-analytics)
 
+Nova Analytics adds a page for analytics in Laravel Nova. It works well if you want to keep your analytics away from the Dashboard page or want more detailed analytics pages. 
 
-This is where your description should go. Try and limit it to a paragraph or two.
+By default there is a main analytics page but you can easily add subpages with more detailed analytics.
 
-Add a screenshot of the tool here.
+You can load any card you want on the analytics pages.
+
+<img width="1440" alt="screen shot 2018-08-24 at 21 01 25" src="https://user-images.githubusercontent.com/14328774/44602899-4f9d7700-a7e1-11e8-9f58-06a803bf8ebb.png">
+
 
 ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require :vendor/:package_name
+composer require bjorndcode/nova-analytics
 ```
 
 Next up, you must register the tool with Nova. This is typically done in the `tools` method of the `NovaServiceProvider`.
@@ -36,13 +38,40 @@ public function tools()
 
 ## Usage
 
-Click on the ":package_name" menu item in your Nova app to see the tool provided by this package.
+In `NovaServiceProvider` you must register all the cards and pages you want. 
 
-### Testing
+```php
+// in app/Providers/NovaServiceProvder.php
 
-``` bash
-composer test
+// ...
+
+public function boot()
+{
+    parent::boot();
+
+    // Add any cards you want shown on the main "Analytics" page
+    AnalyticsDashboard::registerIndexCards([
+        // new Metric,
+    ]);
+
+    // Add any subpages here
+    // The key is the subpage name
+    AnalyticsDashboard::registerPages([
+        'pageName' => [
+            // new Metric,
+        ],
+    ]);
+}
 ```
+
+Click on the "Analytics" menu item in your Nova app to see the cards.
+
+### Supported Cards
+
+You can add any cards you want. A good example is the custom metrics you've created for Nova.
+You can also add cards from other packages. Here is a list of cards that can be useful:
+
+- [nova-google-analytics](https://github.com/tightenco/nova-google-analytics)
 
 ### Changelog
 
@@ -54,26 +83,12 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
-
-## Postcardware
-
-You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+If you discover any security related issues, please email bjornlindholmhansen@gmail.com instead of using the issue tracker.
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
-
-## Support us
-
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
-All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
+- [Bjørn Lindholm](https://github.com/BjornDCode)
+- [All Contributors](../../contributors)
 
 ## License
 

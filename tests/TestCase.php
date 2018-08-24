@@ -1,10 +1,10 @@
 <?php
 
-namespace :namespace_vendor\:namespace_tool_name\Tests;
+namespace BjornDCode\NovaAnalyticsTool\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
-use :namespace_vendor\:namespace_tool_name\ToolServiceProvider;
+use BjornDCode\NovaAnalyticsTool\AnalyticsToolServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -18,7 +18,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            ToolServiceProvider::class,
+            AnalyticsToolServiceProvider::class,
         ];
     }
 }

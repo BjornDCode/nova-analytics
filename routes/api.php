@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('endpoint', \:namespace_vendor\:namespace_tool_name\Http\Controllers\ToolController::class . '@index');
+Route::get('cards', \BjornDCode\NovaAnalyticsTool\Http\Controllers\AnalyticsToolController::class . '@index');
+
+Route::get('page', \BjornDCode\NovaAnalyticsTool\Http\Controllers\AnalyticsToolController::class . '@page');

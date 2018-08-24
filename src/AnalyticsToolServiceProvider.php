@@ -1,14 +1,14 @@
 <?php
 
-namespace :namespace_vendor\:namespace_tool_name;
+namespace BjornDCode\NovaAnalyticsTool;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use :namespace_vendor\:namespace_tool_name\Http\Middleware\Authorize;
+use BjornDCode\NovaAnalyticsTool\Http\Middleware\Authorize;
 
-class ToolServiceProvider extends ServiceProvider
+class AnalyticsToolServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -17,7 +17,7 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', ':package_name');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'Analytics');
 
         $this->app->booted(function () {
             $this->routes();
@@ -40,7 +40,7 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/:vendor/:package_name')
+                ->prefix('nova-vendor/bjorndcode/nova-analytics')
                 ->group(__DIR__.'/../routes/api.php');
     }
 

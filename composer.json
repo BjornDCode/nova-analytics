@@ -1,22 +1,23 @@
 {
-    "name": ":vendor/:package_name",
-    "description": ":package_description",
+    "name": "bjorndcode/nova-analytics",
+    "description": "Analytics tool for Laravel Nova",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "analytics"
     ],
     "repositories": [
         {
             "type": "path",
-            "url": "../laravel-nova"
+            "url": "../nova"
         }
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/BjornDCode/nova-analytics",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Bjorn Lindholm",
+            "email": "bjornlindholmhansen@gmail.com",
             "role": "Developer"
         }
     ],
@@ -30,18 +31,18 @@
     },
     "autoload": {
         "psr-4": {
-            ":namespace_vendor\\:namespace_tool_name\\": "src/"
+            "BjornDCode\\NovaAnalyticsTool\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":namespace_vendor\\:namespace_tool_name\\Tests\\": "tests"
+            "BjornDCode\\NovaAnalyticsTool\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                ":namespace_vendor\\:namespace_tool_name\\ToolServiceProvider"
+                "BjornDCode\\NovaAnalyticsTool\\AnalyticsToolServiceProvider"
             ]
         }
     },

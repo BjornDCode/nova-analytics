@@ -1,9 +1,14 @@
 Nova.booting((Vue, router) => {
     router.addRoutes([
         {
-            name: ':package_name',
-            path: '/:package_name',
-            component: require('./components/Tool'),
+            name: 'Analytics',
+            path: '/analytics',
+            component: require('./components/Analytics'),
         },
+        {
+            name: 'Analytics::Page',
+            path: '/analytics/:page',
+            component: require('./components/Page.vue')
+        }
     ])
 })

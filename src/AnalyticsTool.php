@@ -1,11 +1,11 @@
 <?php
 
-namespace :namespace_vendor\:namespace_tool_name;
+namespace BjornDCode\NovaAnalyticsTool;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool as BaseTool;
 
-class Tool extends BaseTool
+class AnalyticsTool extends BaseTool
 {
     /**
      * Perform any tasks that need to happen when the tool is booted.
@@ -14,8 +14,7 @@ class Tool extends BaseTool
      */
     public function boot()
     {
-        Nova::script(':package_name', __DIR__.'/../dist/js/tool.js');
-        Nova::style(':package_name', __DIR__.'/../dist/css/tool.css');
+        Nova::script('Analytics', __DIR__.'/../dist/js/tool.js');
     }
 
     /**
@@ -25,6 +24,7 @@ class Tool extends BaseTool
      */
     public function renderNavigation()
     {
-        return view(':package_name::navigation');
+        return view('Analytics::navigation', ['pages' => AnalyticsDashboard::$pages]);
     }
+
 }
