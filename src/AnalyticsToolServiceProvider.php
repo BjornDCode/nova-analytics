@@ -17,14 +17,14 @@ class AnalyticsToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'Analytics');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'Analytics');
 
         $this->app->booted(function () {
             $this->routes();
         });
 
         Nova::serving(function (ServingNova $event) {
-            //
+            Nova::cards(AnalyticsDashboard::$indexCards);
         });
     }
 
@@ -41,7 +41,7 @@ class AnalyticsToolServiceProvider extends ServiceProvider
 
         Route::middleware(['nova', Authorize::class])
                 ->prefix('nova-vendor/bjorndcode/nova-analytics')
-                ->group(__DIR__.'/../routes/api.php');
+                ->group(__DIR__ . '/../routes/api.php');
     }
 
     /**
